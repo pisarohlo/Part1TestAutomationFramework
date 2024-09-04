@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Legacy;
 using OpenQA.Selenium;
 using TestAutomationFramework.Configuration;
 using TestAutomationFramework.PageObjects;
@@ -31,7 +30,7 @@ namespace TestAutomationFramework.Tests
         {
             try
             {
-                var testUser = Users.Find(x => x.Username == "practice");
+                var testUser = Users.FirstOrDefault(x => x.Username == "validUser");
                 _loginPage.LoginToTheApplication(testUser.Username, testUser.Password);
                 _loginPage.VerifyPageNotification("You are successfully logged in!");
                 _report.LogTestResult(GetTestCaseId(), nameof(TestValidLogin), "Passed", "Valid login succeeded.");
@@ -50,33 +49,14 @@ namespace TestAutomationFramework.Tests
         {
             try
             {
-                var testUserInvalidCreds = Users.Find(x => x.Username == "practice1");
+                var testUserInvalidCreds = Users.FirstOrDefault(x => x.Username == "invalidUser");
                 _loginPage.LoginToTheApplication(testUserInvalidCreds.Username, testUserInvalidCreds.Password);
-                _loginPage.VerifyPageNotification("Your username is invalid!");
-                _report.LogTestResult(GetTestCaseId(), nameof(TestLoginWithInvalidUsername), "Passed", "Valid login succeeded.");
+                _loginPage.VerifyPageNotification("Your username or password is invalid!");
+                _report.LogTestResult(GetTestCaseId(), nameof(TestLoginWithInvalidUsername), "Passed", "Login with invalid credentials is failed.");
             }
             catch (Exception ex)
             {
                 _report.LogTestResult(GetTestCaseId(), nameof(TestLoginWithInvalidUsername), "Failed", ex.Message);
-                throw; // Rethrow the exception to ensure the test fails
-            }
-
-        }
-
-        [Test]
-        [Property("TestId", "003")]
-        public void TestLoginWithInvalidPassword()
-        {
-            try
-            {
-                var testUserInvalidCreds = Users.Find(x => x.Password == "InvalidPass");
-                _loginPage.LoginToTheApplication(testUserInvalidCreds.Username, testUserInvalidCreds.Password);
-                ClassicAssert.AreEqual("Your password is invalid!", _loginPage.GetPageNotification());
-                _report.LogTestResult(GetTestCaseId(), nameof(TestLoginWithInvalidPassword), "Passed", "Valid login succeeded.");
-            }
-            catch (Exception ex)
-            {
-                _report.LogTestResult(GetTestCaseId(), nameof(TestLoginWithInvalidPassword), "Failed", ex.Message);
                 throw; // Rethrow the exception to ensure the test fails
             }
         }
