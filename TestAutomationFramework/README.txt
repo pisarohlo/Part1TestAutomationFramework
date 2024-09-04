@@ -23,8 +23,9 @@ To run the tests from this project you need to have
 To run the tests:
 1. Populate application Url in appsettings.json file, appropriate test data in 'Users' section
 (valid/invalid username and password for login) and browser which you want to use for the run
-1. Build the solution
-2. In menu below open Test->Test Explorer
-3. Click 'Run' for running all tests or right click on the test which you'd like to run
-4. For checking test report please check the file 'TestReport.html'
+2. In 'LoginPage' class replace the locators with ones that are valid for your application
+3. Build the solution
+4. In menu below open Test->Test Explorer
+5. Click 'Run' for running all tests or right click on the test which you'd like to run
+6. For checking test report please check the file 'TestReport.html'
 
