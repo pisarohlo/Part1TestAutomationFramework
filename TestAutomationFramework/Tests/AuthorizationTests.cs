@@ -57,7 +57,7 @@ namespace TestAutomationFramework.Tests
             catch (Exception ex)
             {
                 _report.LogTestResult(GetTestCaseId(), nameof(TestLoginWithInvalidUsername), "Failed", ex.Message);
-                throw; // Rethrow the exception to ensure the test fails
+                throw;
             }
         }
     }

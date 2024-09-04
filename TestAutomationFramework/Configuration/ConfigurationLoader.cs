@@ -4,6 +4,7 @@ namespace TestAutomationFramework.Configuration
 {
     public static class ConfigurationLoader
     {
+        // configure appsettings file
         private static readonly Lazy<IConfigurationRoot> _config = new Lazy<IConfigurationRoot>(() =>
             new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())

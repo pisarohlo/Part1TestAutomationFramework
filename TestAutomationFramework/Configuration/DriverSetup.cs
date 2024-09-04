@@ -18,6 +18,7 @@ namespace TestAutomationFramework.Configuration
             _browser = settings.Browser;
         }
 
+        // initialize driver according to the variable from appsettings
         public IWebDriver Initialize()
         {
             var webDriverServerPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
