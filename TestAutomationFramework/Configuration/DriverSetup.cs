@@ -33,10 +33,6 @@ namespace TestAutomationFramework.Configuration
                     _driver = new FirefoxDriver(webDriverServerPath);
                     _driver.Manage().Window.Maximize();
                     return _driver;
-                case "edge":
-                    _driver = new EdgeDriver(webDriverServerPath);
-                    _driver.Manage().Window.Maximize();
-                    return _driver;
                 default:
                     _driver = new ChromeDriver(webDriverServerPath);
                     _driver.Manage().Window.Maximize();
